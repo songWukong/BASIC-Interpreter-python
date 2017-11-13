@@ -1,0 +1,10 @@
+GUI:
+    create widgets                   [x]
+    callbacks                        [x]
+    enter new line (list entry)      [x]
+    edit line                        [x]
+    insert line                      [ ] 
+    delete line                      [ ]
+    
+Interpreter:
+    calc class                       [currently working at]
