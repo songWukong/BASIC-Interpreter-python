@@ -7,7 +7,7 @@ This is my self-learning project I'm currently working at. Being inspired by ver
 
 I dream to work in a team making good software for people, but for now my skills are probably too low for that, so here is another reason of making this project - to upgrade my programming skills especially in OOP.
 
-Please feel free to participate in this project if you are fond of rare computers like me. Welcome for those who much more experienced then me - it would owner for me to learn from you how to code better. Welcome if you are a another noob just like me - we can learn together by practice.
+Please feel free to participate in this project if you are fond of rare computers like me. Welcome for those who much more experienced then I am - it would be great owner to learn from you how to code better. Welcome if you are a another noob just like me - we can learn together by practice.
 
 YOU CAN CONTACT ME VIA EMAIL rozovenkoe66@gmail.com WAITING FOR YOUR FEEDBACK))
 
