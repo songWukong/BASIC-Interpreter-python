@@ -100,7 +100,7 @@ class Calc:
 		return num	
 
 calc = Calc()
-result = Calc.parse_Formula(calc, contest)
+result = calc.parse_Formula(contest)
 print result
 
 
