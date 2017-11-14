@@ -1,10 +1,12 @@
-GUI:
-    create widgets                   [x]
-    callbacks                        [x]
-    enter new line (list entry)      [x]
-    edit line                        [x]
-    insert line                      [ ] 
-    delete line                      [ ]
-    
-Interpreter:
-    calc class                       [currently working at]
+GUI
+	insert new line				[]
+	delete old line				[]
+
+CALC
+    addition                    [x]
+    substraction                [x]
+    multyplication              [x]
+    division                    [x]
+    braces                      [x]
+    decimal numbers             [ ]
+    ignore spaces               [ ]        
