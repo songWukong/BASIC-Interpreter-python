@@ -105,7 +105,7 @@ class guiView:
 		text = self.text
 		text.delete('1.0', END)
 		text.insert('1.0', activeLine)
-
+ 
 root = Tk()
 main = guiView(root)
 root.mainloop()		
