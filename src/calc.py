@@ -1,31 +1,33 @@
 source = open("source.bas", "r").read()
-contest = list(source)
+
 
 class Calc:
 
-	def parse_Formula(self, expr):
+	def parse_Formula(self, source):
 
-		result = self.parse_Secondary(expr)
+		expr = list(source)
+		result = self.__parse_Secondary__(expr)
 
 		while (len(expr) > 0):
 			del expr[0]
-			result += self.parse_Secondary(expr)
+			result += self.__parse_Secondary__(expr)
 
 		return result	
+		
 
-	def parse_Secondary(self, expr):
+	def __parse_Secondary__(self, expr):
 
-		exp1 = self.parse_Primary(expr)
+		exp1 = self.__parse_Primary__(expr)
 
 		try:
 			while (expr[0] == "+"):
 				del[expr[0]]
-				exp2 = self.parse_Primary(expr)
+				exp2 = self.__parse_Primary__(expr)
 				exp1 += exp2
 
 			while (expr[0] == "-"):
 				del[expr[0]]
-				exp2 = self.parse_Primary(expr)
+				exp2 = self.__parse_Primary__(expr)
 				exp1 -= exp2	
 
 		except (IndexError):
@@ -34,19 +36,19 @@ class Calc:
 		return exp1				
 
 
-	def parse_Primary(self, expr):
+	def __parse_Primary__(self, expr):
 
-		num1 = self.parse_Dicision(expr)
+		num1 = self.__parse_Dicision__(expr)
 
 		try:
 			while (expr[0] == "*"):
 					del expr[0]
-					num2 = self.parse_Dicision(expr)
+					num2 = self.__parse_Dicision__(expr)
 					num1 *= num2
 
 			while (expr[0] == "/"):
 					del expr[0]
-					num2 = self.parse_Dicision(expr)
+					num2 = self.__parse_Dicision__(expr)
 					num1 /= num2		
 
 		except (IndexError):
@@ -55,7 +57,7 @@ class Calc:
 		return num1			
 
 
-	def parse_Dicision(self, expr):
+	def __parse_Dicision__(self, expr):
 
 		if (expr[0].isdigit()):
 			return self.parse_Num(expr)
@@ -65,7 +67,7 @@ class Calc:
 
 			if (expr[0] == "("):
 				del expr[0]
-				exp = -self.parse_Secondary(expr)
+				exp = -self.__parse_Secondary__(expr)
 				del expr[0]
 				return exp
 
@@ -74,10 +76,10 @@ class Calc:
 
 		elif (expr[0] == "("):
 			del expr[0]
-			exp = self.parse_Secondary(expr)
+			exp = self.__parse_Secondary__(expr)
 			del expr[0]
 			return exp
-					
+
 
 	def parse_Num(self, expr):
 
@@ -100,7 +102,7 @@ class Calc:
 		return num	
 
 calc = Calc()
-result = calc.parse_Formula(contest)
+result = calc.parse_Formula(source)
 print result
 
 
