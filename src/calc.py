@@ -104,9 +104,4 @@ class Calc:
 calc = Calc()
 result = calc.parse_Formula(source)
 print result
-
-
-
-
-#print expr[expr.index(char):]
 		
