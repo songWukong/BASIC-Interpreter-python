@@ -1,6 +1,5 @@
 source = open("source.bas", "r").read()
 
-
 class Calc:
 
 	def parse_Formula(self, source):
@@ -9,6 +8,10 @@ class Calc:
 		result = self.__parse_Secondary__(expr)
 
 		while (len(expr) > 0):
+
+			if (expr[0] == "\n"):	
+				return result
+				
 			del expr[0]
 			result += self.__parse_Secondary__(expr)
 
@@ -80,6 +83,8 @@ class Calc:
 			del expr[0]
 			return exp
 
+		elif (expr[0] == "\n"):	
+				print "new line"	
 
 	def parse_Num(self, expr):
 
@@ -91,7 +96,7 @@ class Calc:
 		while i < numLen:
 
 			if (expr[0].isdigit() == False):
-				return num
+				return num	
 
 			toknum += expr[0]
 			num = int(toknum)	
@@ -104,4 +109,3 @@ class Calc:
 calc = Calc()
 result = calc.parse_Formula(source)
 print result
-		
