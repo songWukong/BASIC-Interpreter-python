@@ -41,17 +41,17 @@ class Calc:
 
 	def __parse_Primary__(self, expr):
 
-		num1 = self.__parse_Dicision__(expr)
+		num1 = self.__parse_Decision__(expr)
 
 		try:
 			while (expr[0] == "*"):
 					del expr[0]
-					num2 = self.__parse_Dicision__(expr)
+					num2 = self.__parse_Decision__(expr)
 					num1 *= num2
 
 			while (expr[0] == "/"):
 					del expr[0]
-					num2 = self.__parse_Dicision__(expr)
+					num2 = self.__parse_Decision__(expr)
 					num1 /= num2		
 
 		except (IndexError):
@@ -60,7 +60,7 @@ class Calc:
 		return num1			
 
 
-	def __parse_Dicision__(self, expr):
+	def __parse_Decision__(self, expr):
 
 		if (expr[0].isdigit()):
 			return self.parse_Num(expr)
