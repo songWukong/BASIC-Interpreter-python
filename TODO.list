@@ -1,0 +1,12 @@
+GUI
+	insert new line				[]
+	delete old line				[]
+
+CALC
+    addition                    [x]
+    substraction                [x]
+    multyplication              [x]
+    division                    [x]
+    braces                      [x]
+    decimal numbers             [ ]
+    ignore spaces               [ ]        
