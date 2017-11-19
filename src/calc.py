@@ -2,14 +2,14 @@ source = open("source.bas", "r").read()
 
 class Calc:
 
-	def parse_Formula(self, source):
+	def parse_Formula(self, expr):
 
-		expr = list(source)
 		result = self.__parse_Secondary__(expr)
 
 		while (len(expr) > 0):
 
-			if (expr[0] == "\n"):	
+			if (expr[0] == "\n"):
+				#del expr[0]
 				return result
 				
 			del expr[0]

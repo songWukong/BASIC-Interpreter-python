@@ -1,3 +1,5 @@
+from calc import *
+
 class Interpreter:
 	
 	def __init__(self, calc):
@@ -20,6 +22,7 @@ class Interpreter:
 
 		try:
 			while (code[0] == "\n"):
+				del code[0]
 				self.__tokenize_Symbol__(code)		
 
 		except (IndexError):		
@@ -31,11 +34,10 @@ class Interpreter:
 		token = ""
 		i = 0
 		
-		while i < tokLen:
+		while (code[0].isupper() == True):
 
-			if (code[0].isupper() == True):
-				token += code[0]
-				del code[0]
+			token += code[0]
+			del code[0]
 
 			i += 1
 
@@ -57,11 +59,10 @@ class Interpreter:
 
 	def __parse_String__(self, code):
 		
-		strLen = len(code)
 		string = ""
 		i = 0
 
-		while i < strLen:
+		while (code[0] != '\"'):
 		
 			string += code[0]
 			del code[0]
@@ -73,4 +74,15 @@ class Interpreter:
 	def __parse_Print__(self, code):
 
 		if (code[0] == "\""):
+			del code[0]
 			print self.__parse_String__(code)
+			del code[0]
+
+		elif (code[0].isdigit()):
+			num = self.calc.parse_Formula(code)
+			print num	
+
+
+calc = Calc()
+interpreter = Interpreter(calc)
+interpreter.run()
