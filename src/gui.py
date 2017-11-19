@@ -1,8 +1,10 @@
 from Tkinter import *
 
-class guiView:
+class IDE:
 
-	def __init__(self, window):
+	def __init__(self, window, interpreter):
+
+		self.interpreter = interpreter
 
 		self.window = window
 		window.geometry("500x510")
@@ -36,7 +38,7 @@ class guiView:
 		scrollbar.pack(side = "right", fill = "y")
 
 		listNodes.config(yscrollcommand = scrollbar.set)
-		listNodes.bind('<<ListboxSelect>>', self.selectLine)
+		listNodes.bind('<<ListboxSelect>>', self.__selectLine__)
 		listNodes.pack(side = "left", fill = BOTH)
 
 		self.text = Text(window, height = 1)
@@ -52,13 +54,13 @@ class guiView:
 					   selectforeground = "#ffffff",
 					   relief="sunken")
 
-		text.bind('<Return>', self.endLine)
+		text.bind('<Return>', self.__endLine__)
 		text.focus_set()
 		text.pack()
 
 		window.call(text, 'configure', '-blockcursor', True)
 
-		self.name = Label(root)
+		self.name = Label(window)
 		name = self.name
 		name.configure(width = 65,
 					   bg = "#dddddd",
@@ -67,10 +69,11 @@ class guiView:
 		
 		name.pack()
 
-	def endLine(self, event):
+	def __endLine__(self, event):
 
 		lineNum = END		
 		text = self.text
+		self.__parseCommand__(text.get("1.0", END))
 		listNodes = self.listNodes
 
 		if (text.get("1.0", 'end-1c')[:1] == "\n"):
@@ -91,7 +94,7 @@ class guiView:
 		listNodes.see(END)
 		text.delete('1.0', END)
 
-	def selectLine(self, event):
+	def __selectLine__(self, event):
 
 		w = event.widget	
 		
@@ -105,7 +108,10 @@ class guiView:
 		text = self.text
 		text.delete('1.0', END)
 		text.insert('1.0', activeLine)
- 
-root = Tk()
-main = guiView(root)
-root.mainloop()		
+
+	def __parseCommand__(self, command):
+		if (command[:-1] == "RUN"):
+			self.interpreter.run()	
+
+	def __loadFile__(self, filename):
+		pass		

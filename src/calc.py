@@ -105,7 +105,3 @@ class Calc:
 			i += 1
 
 		return num	
-
-calc = Calc()
-result = calc.parse_Formula(source)
-print result
