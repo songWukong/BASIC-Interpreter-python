@@ -1,8 +1,11 @@
 from calc import *
 
 class Interpreter:
+
+	__variables = {}
 	
 	def __init__(self, calc):
+
 		self.calc = calc	
 
 	def run(self):
@@ -43,7 +46,11 @@ class Interpreter:
 
 		if (token == "PRINT"):
 			del code[0]
-			self.__parse_Print__(code) 	
+			self.__parse_Print__(code)
+
+		elif (token == "LET"):
+			del code[0]
+			self.__parse_Let__(code)	 	
 
 		return 1	
 
@@ -68,8 +75,8 @@ class Interpreter:
 			del code[0]
 			i += 1
 		
-		return string;		
-
+		return string;
+		
 
 	def __parse_Print__(self, code):
 
@@ -80,7 +87,35 @@ class Interpreter:
 
 		elif (code[0].isdigit()):
 			num = self.calc.parse_Formula(code)
-			print num	
+			print num
+
+
+	def __parse_Let__(self, code):
+	
+		varName = ""
+		varVal = ""
+
+		while (code[0] != "="):
+			varName += code[0]
+			del code[0]
+
+		if (code[0] == "="):
+			del code[0]
+
+			try:
+				while (code[0] != "\n"):
+
+					if (code[0].isdigit()):
+						varVal += code[0]
+						del code[0]
+
+			except (IndexError):
+				self.__variables[varName] = int(varVal)	
+				print self.__variables
+				return									
+			
+		self.__variables[varName] = int(varVal)
+		print self.__variables	
 
 
 calc = Calc()

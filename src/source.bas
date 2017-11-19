@@ -1,6 +1,3 @@
-PRINT "Hello, world"
-PRINT "Hi"
-PRINT 2
-PRINT 123
-PRINT 111
-PRINT 2*(23+23)
+LET a=10
+LET b=2
+LET c=4
